@@ -40,4 +40,7 @@ re: clean build
 compiledb: build
 	cp build/compile_commands.json .
 
-.PHONY: build flash monitor flash_monitor config size size-components size-files clean re
+cppcheck:
+	cppcheck --quiet --enable=warning,style,performance,portability main components
+
+.PHONY: build flash monitor flash_monitor config size size-components size-files clean re compiledb cppcheck
