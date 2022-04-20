@@ -1,14 +1,23 @@
+name: ESP32 Builder
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
-    - name: esp-idf build
-      uses: espressif/esp-idf-ci-action@main
-      with:
-        esp_idf_version: v4.4
-        target: esp32
-        path: '.'
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Espressif IoT Development Framework ESP-IDF
+        uses: espressif/esp-idf-ci-action@main
+        with:
+          esp_idf_version: v4.4
+          target: esp32
+          path: '.'
